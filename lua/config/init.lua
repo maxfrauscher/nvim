@@ -3,7 +3,7 @@ local o = vim.o
 local opt = vim.opt
 local A = vim.api
 
-o.termguicolors = true
+o.termguicolors = true 
 
 -- Decrease update time
 o.timeoutlen = 500

@@ -49,8 +49,8 @@ local function save_profiles(threshold)
 end
 
 time([[Luarocks path setup]], true)
-local package_path_str = "/home/maxfr/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?.lua;/home/maxfr/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?/init.lua;/home/maxfr/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?.lua;/home/maxfr/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?/init.lua"
-local install_cpath_pattern = "/home/maxfr/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/lua/5.1/?.so"
+local package_path_str = "/Users/maximilianfrauscher/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?.lua;/Users/maximilianfrauscher/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?/init.lua;/Users/maximilianfrauscher/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?.lua;/Users/maximilianfrauscher/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?/init.lua"
+local install_cpath_pattern = "/Users/maximilianfrauscher/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/lua/5.1/?.so"
 if not string.find(package.path, package_path_str, 1, true) then
   package.path = package.path .. ';' .. package_path_str
 end
@@ -74,158 +74,93 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
-  LuaSnip = {
-    loaded = true,
-    path = "/home/maxfr/.local/share/nvim/site/pack/packer/start/LuaSnip",
-    url = "https://github.com/L3MON4D3/LuaSnip"
-  },
-  ["cmp-nvim-lsp"] = {
-    loaded = true,
-    path = "/home/maxfr/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
-    url = "https://github.com/hrsh7th/cmp-nvim-lsp"
-  },
-  cmp_luasnip = {
-    loaded = true,
-    path = "/home/maxfr/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
-    url = "https://github.com/saadparwaiz1/cmp_luasnip"
-  },
-  ["dashboard-nvim"] = {
-    loaded = true,
-    path = "/home/maxfr/.local/share/nvim/site/pack/packer/start/dashboard-nvim",
-    url = "https://github.com/glepnir/dashboard-nvim"
-  },
-  ["goyo.vim"] = {
-    loaded = true,
-    path = "/home/maxfr/.local/share/nvim/site/pack/packer/start/goyo.vim",
-    url = "https://github.com/junegunn/goyo.vim"
-  },
-  ["i3-vim-syntax"] = {
-    loaded = true,
-    path = "/home/maxfr/.local/share/nvim/site/pack/packer/start/i3-vim-syntax",
-    url = "https://github.com/PotatoesMaster/i3-vim-syntax"
-  },
-  ["limelight.vim"] = {
-    loaded = true,
-    path = "/home/maxfr/.local/share/nvim/site/pack/packer/start/limelight.vim",
-    url = "https://github.com/junegunn/limelight.vim"
-  },
   ["lualine.nvim"] = {
     loaded = true,
-    path = "/home/maxfr/.local/share/nvim/site/pack/packer/start/lualine.nvim",
+    path = "/Users/maximilianfrauscher/.local/share/nvim/site/pack/packer/start/lualine.nvim",
     url = "https://github.com/nvim-lualine/lualine.nvim"
   },
   nerdtree = {
     loaded = true,
-    path = "/home/maxfr/.local/share/nvim/site/pack/packer/start/nerdtree",
+    path = "/Users/maximilianfrauscher/.local/share/nvim/site/pack/packer/start/nerdtree",
     url = "https://github.com/scrooloose/nerdtree"
   },
   ["nvim-base16"] = {
     loaded = true,
-    path = "/home/maxfr/.local/share/nvim/site/pack/packer/start/nvim-base16",
+    path = "/Users/maximilianfrauscher/.local/share/nvim/site/pack/packer/start/nvim-base16",
     url = "https://github.com/RRethy/nvim-base16"
-  },
-  ["nvim-cmp"] = {
-    loaded = true,
-    path = "/home/maxfr/.local/share/nvim/site/pack/packer/start/nvim-cmp",
-    url = "https://github.com/hrsh7th/nvim-cmp"
   },
   ["nvim-palenight.lua"] = {
     loaded = true,
-    path = "/home/maxfr/.local/share/nvim/site/pack/packer/start/nvim-palenight.lua",
+    path = "/Users/maximilianfrauscher/.local/share/nvim/site/pack/packer/start/nvim-palenight.lua",
     url = "https://github.com/kyazdani42/nvim-palenight.lua"
   },
   ["nvim-treesitter"] = {
     config = { "\27LJ\2\n¼\1\0\0\5\0\n\0\r6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\6\0005\3\3\0005\4\4\0=\4\5\3=\3\a\0025\3\b\0=\3\t\2B\0\2\1K\0\1\0\21ensure_installed\1\2\0\0\borg\14highlight\1\0\0&additional_vim_regex_highlighting\1\2\0\0\borg\1\0\1\venable\2\nsetup\28nvim-treesitter.configs\frequire\0" },
     loaded = true,
-    path = "/home/maxfr/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
+    path = "/Users/maximilianfrauscher/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
     url = "https://github.com/nvim-treesitter/nvim-treesitter"
   },
   ["nvim-web-devicons"] = {
     loaded = false,
     needs_bufread = false,
-    path = "/home/maxfr/.local/share/nvim/site/pack/packer/opt/nvim-web-devicons",
+    path = "/Users/maximilianfrauscher/.local/share/nvim/site/pack/packer/opt/nvim-web-devicons",
     url = "https://github.com/kyazdani42/nvim-web-devicons"
   },
   ["packer.nvim"] = {
     loaded = true,
-    path = "/home/maxfr/.local/share/nvim/site/pack/packer/start/packer.nvim",
+    path = "/Users/maximilianfrauscher/.local/share/nvim/site/pack/packer/start/packer.nvim",
     url = "https://github.com/wbthomason/packer.nvim"
   },
   ["plenary.nvim"] = {
     loaded = true,
-    path = "/home/maxfr/.local/share/nvim/site/pack/packer/start/plenary.nvim",
+    path = "/Users/maximilianfrauscher/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
   },
   ["python-syntax"] = {
     loaded = true,
-    path = "/home/maxfr/.local/share/nvim/site/pack/packer/start/python-syntax",
+    path = "/Users/maximilianfrauscher/.local/share/nvim/site/pack/packer/start/python-syntax",
     url = "https://github.com/vim-python/python-syntax"
-  },
-  ["sxhkd-vim"] = {
-    loaded = true,
-    path = "/home/maxfr/.local/share/nvim/site/pack/packer/start/sxhkd-vim",
-    url = "https://github.com/kovetskiy/sxhkd-vim"
   },
   ["telescope-file-browser.nvim"] = {
     config = { "\27LJ\2\n¬\1\0\0\a\0\f\0\0176\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\n\0005\3\b\0005\4\3\0005\5\4\0004\6\0\0=\6\5\0054\6\0\0=\6\6\5=\5\a\4=\4\t\3=\3\v\2B\0\2\1K\0\1\0\15extensions\1\0\0\17file_browser\1\0\0\rmappings\6n\6i\1\0\0\1\0\2\ntheme\bivy\17hijack_netrw\2\nsetup\14telescope\frequire\0" },
     loaded = true,
-    path = "/home/maxfr/.local/share/nvim/site/pack/packer/start/telescope-file-browser.nvim",
+    path = "/Users/maximilianfrauscher/.local/share/nvim/site/pack/packer/start/telescope-file-browser.nvim",
     url = "https://github.com/nvim-telescope/telescope-file-browser.nvim"
   },
   ["telescope.nvim"] = {
     loaded = true,
-    path = "/home/maxfr/.local/share/nvim/site/pack/packer/start/telescope.nvim",
+    path = "/Users/maximilianfrauscher/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
-  },
-  ["vifm.vim"] = {
-    loaded = true,
-    path = "/home/maxfr/.local/share/nvim/site/pack/packer/start/vifm.vim",
-    url = "https://github.com/vifm/vifm.vim"
   },
   ["vim-css-color"] = {
     loaded = true,
-    path = "/home/maxfr/.local/share/nvim/site/pack/packer/start/vim-css-color",
+    path = "/Users/maximilianfrauscher/.local/share/nvim/site/pack/packer/start/vim-css-color",
     url = "https://github.com/ap/vim-css-color"
   },
   ["vim-devicons"] = {
     loaded = true,
-    path = "/home/maxfr/.local/share/nvim/site/pack/packer/start/vim-devicons",
+    path = "/Users/maximilianfrauscher/.local/share/nvim/site/pack/packer/start/vim-devicons",
     url = "https://github.com/ryanoasis/vim-devicons"
-  },
-  ["vim-emoji"] = {
-    loaded = true,
-    path = "/home/maxfr/.local/share/nvim/site/pack/packer/start/vim-emoji",
-    url = "https://github.com/junegunn/vim-emoji"
   },
   ["vim-nerdtree-syntax-highlight"] = {
     loaded = true,
-    path = "/home/maxfr/.local/share/nvim/site/pack/packer/start/vim-nerdtree-syntax-highlight",
+    path = "/Users/maximilianfrauscher/.local/share/nvim/site/pack/packer/start/vim-nerdtree-syntax-highlight",
     url = "https://github.com/tiagofumo/vim-nerdtree-syntax-highlight"
   },
   ["vim-rainbow"] = {
     loaded = true,
-    path = "/home/maxfr/.local/share/nvim/site/pack/packer/start/vim-rainbow",
+    path = "/Users/maximilianfrauscher/.local/share/nvim/site/pack/packer/start/vim-rainbow",
     url = "https://github.com/frazrepo/vim-rainbow"
   },
   ["vim-surround"] = {
     loaded = true,
-    path = "/home/maxfr/.local/share/nvim/site/pack/packer/start/vim-surround",
+    path = "/Users/maximilianfrauscher/.local/share/nvim/site/pack/packer/start/vim-surround",
     url = "https://github.com/tpope/vim-surround"
-  },
-  vimagit = {
-    loaded = true,
-    path = "/home/maxfr/.local/share/nvim/site/pack/packer/start/vimagit",
-    url = "https://github.com/jreybert/vimagit"
-  },
-  vimwiki = {
-    loaded = true,
-    path = "/home/maxfr/.local/share/nvim/site/pack/packer/start/vimwiki",
-    url = "https://github.com/vimwiki/vimwiki"
   },
   ["which-key.nvim"] = {
     config = { "\27LJ\2\n;\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\14which-key\frequire\0" },
     loaded = true,
-    path = "/home/maxfr/.local/share/nvim/site/pack/packer/start/which-key.nvim",
+    path = "/Users/maximilianfrauscher/.local/share/nvim/site/pack/packer/start/which-key.nvim",
     url = "https://github.com/folke/which-key.nvim"
   }
 }

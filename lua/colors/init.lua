@@ -12,4 +12,12 @@ local ok, _ = pcall(vim.cmd, 'colorscheme base16-onedark')
 -- local ok, _ = pcall(vim.cmd, 'colorscheme palenight')
 -- local ok, _ = pcall(vim.cmd, 'colorscheme base16-solarized-dark')
 -- local ok, _ = pcall(vim.cmd, 'colorscheme base16-solarized-light')
+--
+--vim.api.nvim_command([[
+--    augroup ChangeBackgroudColour
+--        autocmd colorscheme * :hi normal guibg=none
+--    augroup END
+--]])
+
+--local ok, _ = pcall(vim.cmd, 'colorscheme * :hi normal guibg=none')
 -- local ok, _ = pcall(vim.cmd, 'colorscheme base16-tomorrow-night')

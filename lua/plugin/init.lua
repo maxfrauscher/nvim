@@ -3,23 +3,31 @@
 -------------------------------------------------
 
 return require('packer').startup(function()
+  -- Packer can manage itself
+  use 'wbthomason/packer.nvim'
+
+  use 'neovim/nvim-lspconfig' -- Collection of configurations for built-in LSP client
+  use 'hrsh7th/nvim-cmp' -- Autocompletion plugin
+  use 'hrsh7th/cmp-nvim-lsp' -- LSP source for nvim-cmp
+  use 'saadparwaiz1/cmp_luasnip' -- Snippets source for nvim-cmp
+  use 'L3MON4D3/LuaSnip' -- Snippets plugin
+
+  -- NULL LS --
+  use('jose-elias-alvarez/null-ls.nvim')
+  use('MunifTanjim/prettier.nvim')
+  
+  
   use {
     'nvim-lualine/lualine.nvim',
     requires = { 'kyazdani42/nvim-web-devicons', opt = true }
   }
-
-
-  -- Packer can manage itself
-  use 'wbthomason/packer.nvim'
-
-  -- Dashboard is a nice start screen for nvim
-  use 'glepnir/dashboard-nvim'
 
   -- Telescope and related plugins --
   use {
     'nvim-telescope/telescope.nvim', tag = '0.1.0',
     requires = { {'nvim-lua/plenary.nvim'} }
   }
+
   use { "nvim-telescope/telescope-file-browser.nvim",
         config = function()
         require("telescope").setup {
@@ -41,9 +49,6 @@ return require('packer').startup(function()
         }
         end
   }
-  -- To get telescope-file-browser loaded and working with telescope,
-  -- you need to call load_extension, somewhere after setup function:
-  require("telescope").load_extension "file_browser"
 
   -- Treesitter --
   use {'nvim-treesitter/nvim-treesitter',
@@ -60,10 +65,6 @@ return require('packer').startup(function()
        end
   }
 
-  -- Productivity --
-  use 'vimwiki/vimwiki'
-  use 'jreybert/vimagit'
-
   -- Which key
   use {
     "folke/which-key.nvim",
@@ -74,9 +75,10 @@ return require('packer').startup(function()
       }
     end
   }
+  
 
   -- File management --
-  use 'vifm/vifm.vim'
+  -- use 'vifm/vifm.vim'
   use 'scrooloose/nerdtree'
   use 'tiagofumo/vim-nerdtree-syntax-highlight'
   use 'ryanoasis/vim-devicons'
@@ -85,15 +87,8 @@ return require('packer').startup(function()
   use 'tpope/vim-surround'
 
   -- Syntax Highlighting and Colors --
-  use 'PotatoesMaster/i3-vim-syntax'
-  use 'kovetskiy/sxhkd-vim'
   use 'vim-python/python-syntax'
   use 'ap/vim-css-color'
-
-  -- Junegunn Choi Plugins --
-  use 'junegunn/goyo.vim'
-  use 'junegunn/limelight.vim'
-  use 'junegunn/vim-emoji'
 
   -- Colorschemes --
   use 'RRethy/nvim-base16'
