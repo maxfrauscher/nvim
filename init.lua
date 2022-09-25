@@ -4,6 +4,4 @@ require('colors')
 require('plugin')
 require('mappings')
 require('lsp')
-
-
-
+require('masonlsp')

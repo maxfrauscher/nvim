@@ -21,3 +21,6 @@ local ok, _ = pcall(vim.cmd, 'colorscheme base16-onedark')
 
 --local ok, _ = pcall(vim.cmd, 'colorscheme * :hi normal guibg=none')
 -- local ok, _ = pcall(vim.cmd, 'colorscheme base16-tomorrow-night')
+
+pcall(vim.cmd, 'highlight Normal ctermbg=none guibg=none')
+pcall(vim.cmd, 'highlight NonText ctermbg=none guibg=none')

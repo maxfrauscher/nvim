@@ -1,10 +1,14 @@
 -------------------------------------------------
 -- PLUGINS
--------------------------------------------------
+------------------------------------------------
 
 return require('packer').startup(function()
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
+
+  use "williamboman/mason.nvim"
+  use "williamboman/mason-lspconfig.nvim"
+  use 'mfussenegger/nvim-dap'
 
   use 'neovim/nvim-lspconfig' -- Collection of configurations for built-in LSP client
   use 'hrsh7th/nvim-cmp' -- Autocompletion plugin
@@ -62,8 +66,21 @@ return require('packer').startup(function()
                },
             ensure_installed = {'org'}, -- Or run :TSUpdate org
             }
-       end
+       end,
+       run = function() require('nvim-treesitter.install').update({ with_sync = true }) end
   }
+
+  -- vim.opt.foldmethod     = 'expr'
+  -- vim.opt.foldexpr       = 'nvim_treesitter#foldexpr()'
+  ---WORKAROUND
+ -- vim.api.nvim_create_autocmd({'BufEnter','BufAdd','BufNew','BufNewFile','BufWinEnter'}, {
+ --   group = vim.api.nvim_create_augroup('TS_FOLD_WORKAROUND', {}),
+ --   callback = function()
+ --     vim.opt.foldmethod     = 'expr'
+ --     vim.opt.foldexpr       = 'nvim_treesitter#foldexpr()'
+ --   end
+ -- })
+  ---ENDWORKAROUND
 
   -- Which key
   use {
@@ -87,8 +104,8 @@ return require('packer').startup(function()
   use 'tpope/vim-surround'
 
   -- Syntax Highlighting and Colors --
-  use 'vim-python/python-syntax'
-  use 'ap/vim-css-color'
+  -- use 'vim-python/python-syntax'
+  -- use 'ap/vim-css-color'
 
   -- Colorschemes --
   use 'RRethy/nvim-base16'

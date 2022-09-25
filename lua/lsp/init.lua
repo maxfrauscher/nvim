@@ -5,7 +5,7 @@ capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 local lspconfig = require('lspconfig')
 
 -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
-local servers = { 'clangd', 'rust_analyzer', 'pyright', 'tsserver', 'eslint', 'html' }
+local servers = { 'clangd', 'rust_analyzer', 'tailwindcss', 'cssls', 'pyright', 'tsserver', 'eslint', 'html' }
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
     -- on_attach = my_custom_on_attach,
@@ -59,12 +59,17 @@ cmp.setup {
 local null_ls = require("null-ls")
 
 null_ls.setup({
+  sources = {
+      require("null-ls").builtins.formatting.stylua,
+      require("null-ls").builtins.diagnostics.eslint,
+      require("null-ls").builtins.completion.spell
+  },
   on_attach = function(client, bufnr)
     if client.server_capabilities.documentFormattingProvider then
       vim.cmd("nnoremap <silent><buffer> <Leader>F :lua vim.lsp.buf.formatting()<CR>")
 
       -- format on save
-      vim.cmd("autocmd BufWritePost <buffer> lua vim.lsp.buf.formatting()")
+      --vim.cmd("autocmd BufWritePost <buffer> lua vim.lsp.buf.formatting()")
     end
 
     if client.server_capabilities.documentRangeFormattingProvider then
