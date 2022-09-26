@@ -16,6 +16,17 @@ end
 -- luasnip setup
 local luasnip = require 'luasnip'
 
+
+require('lspconfig').cssls.setup({
+  settings = {
+    css = {
+      lint = {
+        unknownAtRules = 'ignore',
+      },
+    },
+  },
+})
+
 -- nvim-cmp setup
 local cmp = require 'cmp'
 cmp.setup {
