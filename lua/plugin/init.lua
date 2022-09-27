@@ -19,8 +19,14 @@ return require('packer').startup(function()
   -- NULL LS --
   use('jose-elias-alvarez/null-ls.nvim')
   use('MunifTanjim/prettier.nvim')
-  
-  
+
+  -- GIT --
+  -- https://www.chrisatmachine.com/blog/category/neovim/12-git-integration
+  use "tpope/vim-fugitive"
+  use 'mhinz/vim-signify'
+  use 'tpope/vim-rhubarb'
+  use 'junegunn/gv.vim'
+
   use {
     'nvim-lualine/lualine.nvim',
     requires = { 'kyazdani42/nvim-web-devicons', opt = true }
@@ -29,57 +35,58 @@ return require('packer').startup(function()
   -- Telescope and related plugins --
   use {
     'nvim-telescope/telescope.nvim', tag = '0.1.0',
-    requires = { {'nvim-lua/plenary.nvim'} }
+    requires = { { 'nvim-lua/plenary.nvim' } }
   }
 
   use { "nvim-telescope/telescope-file-browser.nvim",
-        config = function()
-        require("telescope").setup {
-          extensions = {
-            file_browser = {
-              theme = "ivy",
-              -- disables netrw and use telescope-file-browser in its place
-              hijack_netrw = true,
-              mappings = {
-                ["i"] = {
-                  -- your custom insert mode mappings
-                },
-                ["n"] = {
-                  -- your custom normal mode mappings
-                },
+    config = function()
+      require("telescope").setup {
+        file_ignore_patterns = { ".git/", ".cache", ".lock", "%.o", "%.a", "%.out", "%.pdf", "%.mkv", "%.mp4", "%.zip" },
+        extensions = {
+          file_browser = {
+            theme = "ivy",
+            -- disables netrw and use telescope-file-browser in its place
+            hijack_netrw = true,
+            mappings = {
+              ["i"] = {
+                -- your custom insert mode mappings
+              },
+              ["n"] = {
+                -- your custom normal mode mappings
               },
             },
           },
-        }
-        end
+        },
+      }
+    end
   }
 
   -- Treesitter --
-  use {'nvim-treesitter/nvim-treesitter',
-       config = function()
-          require'nvim-treesitter.configs'.setup {
-          -- If TS highlights are not enabled at all, or disabled via `disable` prop,
-          -- highlighting will fallback to default Vim syntax highlighting
-            highlight = {
-               enable = true,
-               additional_vim_regex_highlighting = {'org'}, -- Required for spellcheck, some LaTex highlights and code block highlights that do not have ts grammar
-               },
-            ensure_installed = {'org'}, -- Or run :TSUpdate org
-            }
-       end,
-       run = function() require('nvim-treesitter.install').update({ with_sync = true }) end
+  use { 'nvim-treesitter/nvim-treesitter',
+    config = function()
+      require 'nvim-treesitter.configs'.setup {
+        -- If TS highlights are not enabled at all, or disabled via `disable` prop,
+        -- highlighting will fallback to default Vim syntax highlighting
+        highlight = {
+          enable = true,
+          additional_vim_regex_highlighting = { 'org' }, -- Required for spellcheck, some LaTex highlights and code block highlights that do not have ts grammar
+        },
+        ensure_installed = { 'org' }, -- Or run :TSUpdate org
+      }
+    end,
+    run = function() require('nvim-treesitter.install').update({ with_sync = true }) end
   }
 
   -- vim.opt.foldmethod     = 'expr'
   -- vim.opt.foldexpr       = 'nvim_treesitter#foldexpr()'
   ---WORKAROUND
- -- vim.api.nvim_create_autocmd({'BufEnter','BufAdd','BufNew','BufNewFile','BufWinEnter'}, {
- --   group = vim.api.nvim_create_augroup('TS_FOLD_WORKAROUND', {}),
- --   callback = function()
- --     vim.opt.foldmethod     = 'expr'
- --     vim.opt.foldexpr       = 'nvim_treesitter#foldexpr()'
- --   end
- -- })
+  -- vim.api.nvim_create_autocmd({'BufEnter','BufAdd','BufNew','BufNewFile','BufWinEnter'}, {
+  --   group = vim.api.nvim_create_augroup('TS_FOLD_WORKAROUND', {}),
+  --   callback = function()
+  --     vim.opt.foldmethod     = 'expr'
+  --     vim.opt.foldexpr       = 'nvim_treesitter#foldexpr()'
+  --   end
+  -- })
   ---ENDWORKAROUND
 
   -- Which key
@@ -87,12 +94,12 @@ return require('packer').startup(function()
     "folke/which-key.nvim",
     config = function()
       require("which-key").setup {
-      -- your configuration comes here
-      -- or leave it empty to use the default settings
+        -- your configuration comes here
+        -- or leave it empty to use the default settings
       }
     end
   }
-  
+
 
   -- File management --
   -- use 'vifm/vifm.vim'
@@ -114,4 +121,3 @@ return require('packer').startup(function()
   -- Other stuff --
   use 'frazrepo/vim-rainbow'
 end)
-

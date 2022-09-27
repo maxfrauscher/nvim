@@ -18,13 +18,14 @@ o.numberwidth = 2
 o.relativenumber = true
 o.signcolumn = 'yes'
 o.cursorline = true
-
+opt.sidescroll = 1
+opt.sidescrolloff = 20
 -- Better editing experience
 o.expandtab = true
 o.smarttab = true
 o.cindent = true
 o.autoindent = true
-o.wrap = true
+o.wrap = false
 o.textwidth = 300
 o.tabstop = 2 
 o.shiftwidth = 2
