@@ -1,9 +1,49 @@
+-----------------------------------------------------------
+-- Plugin manager configuration file
+-----------------------------------------------------------
+
+-- Plugin manager: packer.nvim
+-- url: https://github.com/wbthomason/packer.nvim
+
+-- For information about installed plugins see the README:
+-- neovim-lua/README.md
+-- https://github.com/brainfucksec/neovim-lua#readme
+
+
+-- Automatically install packer
+local fn = vim.fn
+local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
+
+if fn.empty(fn.glob(install_path)) > 0 then
+  packer_bootstrap = fn.system({
+    'git',
+    'clone',
+    '--depth',
+    '1',
+    'https://github.com/wbthomason/packer.nvim',
+    install_path
+  })
+  vim.o.runtimepath = vim.fn.stdpath('data') .. '/site/pack/*/start/*,' .. vim.o.runtimepath
+end
+
+-- Autocommand that reloads neovim whenever you save the packer_init.lua file
+vim.cmd [[
+  augroup packer_user_config
+    autocmd!
+    autocmd BufWritePost packer_init.lua source <afile> | PackerSync
+  augroup end
+]]
+
+-- Use a protected call so we don't error out on first use
+local status_ok, packer = pcall(require, 'packer')
+if not status_ok then
+  return
+end
 -------------------------------------------------
--- PLUGINS
+-- INSTALL PLUGINS
 ------------------------------------------------
 require("nvim_comment").setup()
 require("nvim-autopairs").setup()
-require("which-key").setup()
 require("nvim-surround").setup()
 
 return require('packer').startup(function()
@@ -19,9 +59,9 @@ return require('packer').startup(function()
   use 'hrsh7th/cmp-buffer'
   use 'hrsh7th/cmp-path'
   use 'hrsh7th/cmp-cmdline'
+  use 'L3MON4D3/LuaSnip' -- Snippets plugin
   use 'saadparwaiz1/cmp_luasnip' -- Snippets source for nvim-cmp
   use 'onsails/lspkind-nvim'
-  use 'L3MON4D3/LuaSnip' -- Snippets plugin
   use "windwp/nvim-autopairs"
   use('jose-elias-alvarez/null-ls.nvim')
   use('MunifTanjim/prettier.nvim')
@@ -44,42 +84,10 @@ return require('packer').startup(function()
     requires = { { 'nvim-lua/plenary.nvim' } }
   }
 
-  use { "nvim-telescope/telescope-file-browser.nvim",
-    config = function()
-      require("telescope").setup {
-        file_ignore_patterns = { ".git/", ".cache", ".lock", "%.o", "%.a", "%.out", "%.pdf", "%.mkv", "%.mp4", "%.zip" },
-        extensions = {
-          file_browser = {
-            theme = "ivy",
-            -- disables netrw and use telescope-file-browser in its place
-            hijack_netrw = true,
-            mappings = {
-              ["i"] = {
-                -- your custom insert mode mappings
-              },
-              ["n"] = {
-                -- your custom normal mode mappings
-              },
-            },
-          },
-        },
-      }
-    end
-  }
+  use 'nvim-telescope/telescope-file-browser.nvim'
 
   -- Treesitter --
   use { 'nvim-treesitter/nvim-treesitter',
-    config = function()
-      require 'nvim-treesitter.configs'.setup {
-        -- If TS highlights are not enabled at all, or disabled via `disable` prop,
-        -- highlighting will fallback to default Vim syntax highlighting
-        highlight = {
-          enable = true,
-          additional_vim_regex_highlighting = { 'org' }, -- Required for spellcheck, some LaTex highlights and code block highlights that do not have ts grammar
-        },
-        ensure_installed = { 'org' }, -- Or run :TSUpdate org
-      }
-    end,
     run = function() require('nvim-treesitter.install').update({ with_sync = true }) end
   }
   use 'nvim-treesitter/nvim-treesitter-textobjects'
@@ -92,15 +100,18 @@ return require('packer').startup(function()
   use 'scrooloose/nerdtree'
   use 'tiagofumo/vim-nerdtree-syntax-highlight'
   use 'ryanoasis/vim-devicons'
+  use 'kyazdani42/nvim-web-devicons'
+  use {
+    'kyazdani42/nvim-tree.lua',
+    requires = {
+      'kyazdani42/nvim-web-devicons', -- optional, for file icons
+    },
+    tag = 'nightly' -- optional, updated every week. (see issue #1193)
+  }
 
   use({
-      "kylechui/nvim-surround",
-      tag = "*", -- Use for stability; omit to use `main` branch for the latest features
-      config = function()
-          require("nvim-surround").setup({
-              -- Configuration here, or leave empty to use defaults
-          })
-      end
+    "kylechui/nvim-surround",
+    tag = "*" -- Use for stability; omit to use `main` branch for the latest features
   })
 
   -- Colorschemes --
@@ -109,4 +120,10 @@ return require('packer').startup(function()
 
   -- Other stuff --
   use 'frazrepo/vim-rainbow'
+
+  -- Automatically set up your configuration after cloning packer.nvim
+  -- Put this at the end after all plugins
+  if packer_bootstrap then
+    require('packer').sync()
+  end
 end)

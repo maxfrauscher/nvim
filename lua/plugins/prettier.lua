@@ -1,5 +1,7 @@
--- Prettier
-local prettier = require("prettier")
+local status_ok, prettier = pcall(require, 'prettier')
+if not status_ok then
+  return
+end
 
 prettier.setup({
   bin = 'prettier', -- or `'prettierd'` (v0.22+)

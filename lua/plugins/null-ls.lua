@@ -1,5 +1,9 @@
--- NULL LS
-require("null-ls").setup({
+local nullls_status_ok, nullls = pcall(require, 'null-ls')
+if not nullls_status_ok then
+  return
+end
+
+nullls.setup({
   sources = {
     require("null-ls").builtins.formatting.stylua,
     require("null-ls").builtins.formatting.prettier,

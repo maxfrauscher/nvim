@@ -1,34 +1,67 @@
 local types = require "cmp.types"
 local str = require "cmp.utils.str"
 
--- completion maps (not cmp) --
--- line completion - use more!
--- inoremap <C-l> <C-x><C-l>
--- vim.api.nvim_set_keymap("i", "<c-l>", "<c-x><c-l>", { noremap = true })
--- Vim command-line completion
--- inoremap <C-v> <C-x><C-v>
--- vim.api.nvim_set_keymap("i", "<c-v>", "<c-x><c-v>", { noremap = true })
--- end non-cmp completion maps --
+local cmp_status_ok, cmp = pcall(require, 'cmp')
+if not cmp_status_ok then
+  return
+end
 
-vim.opt.completeopt = {'menu', 'menuone', 'noselect'}
--- Setup nvim-cmp
-local cmp = require "cmp"
+local lspkind_status_ok, lspkind = pcall(require, 'lspkind')
+if not lspkind_status_ok then
+  return
+end
 
--- lspkind
-local lspkind = require "lspkind"
+local cmp_autopairs_status_ok, cmp_autopairs = pcall(require, 'nvim-autopairs.completion.cmp')
+if not cmp_autopairs_status_ok then
+  return
+end
+
+local luasnip_status_ok, luasnip = pcall(require, 'luasnip')
+if not luasnip_status_ok then
+  return
+end
 
 cmp.setup {
+  -- SNIPPETS
   snippet = {
     expand = function(args)
-      require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+      luasnip.lsp_expand(args.body) -- For `luasnip` users.
     end,
   },
+  completion = {
+    completeopt = 'menu, menuone, noselect',
+    keyword_length = 2
+  },
+  -- MAPPING
   mapping = cmp.mapping.preset.insert({
     ["<C-b>"] = cmp.mapping.scroll_docs(-4),
     ["<C-f>"] = cmp.mapping.scroll_docs(4),
     ["<C-Space>"] = cmp.mapping.complete(),
     ["<C-e>"] = cmp.mapping.abort(),
-    ["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+    ["<CR>"] = cmp.mapping.confirm({
+      select = true,
+      behaviour = cmp.ConfirmBehavior.Replace,
+    }
+    ), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+    -- TAB MAPPING
+    ['<Tab>'] = function(fallback)
+      if cmp.visible() then
+        cmp.select_next_item()
+      elseif luasnip.expand_or_jumpable() then
+        luasnip.expand_or_jump()
+      else
+        fallback()
+      end
+    end,
+    ['<S-Tab>'] = function(fallback)
+      if cmp.visible() then
+        cmp.select_prev_item()
+      elseif luasnip.jumpable(-1) then
+        luasnip.jump(-1)
+      else
+        fallback()
+      end
+    end
   }),
   experimental = {
     ghost_text = true,
@@ -80,9 +113,8 @@ cmp.setup {
           word = vim.lsp.util.parse_snippet(word)
         end
         word = str.oneline(word)
-        if
-          entry.completion_item.insertTextFormat == types.lsp.InsertTextFormat.Snippet
-          and string.sub(vim_item.abbr, -1, -1) == "~"
+        if entry.completion_item.insertTextFormat == types.lsp.InsertTextFormat.Snippet
+            and string.sub(vim_item.abbr, -1, -1) == "~"
         then
           word = word .. "~"
         end
@@ -92,6 +124,7 @@ cmp.setup {
       end,
     },
   },
+
 }
 
 cmp.setup.filetype("gitcommit", {
@@ -120,5 +153,4 @@ cmp.setup.cmdline(":", {
   }),
 })
 -- insert `(` after select function or method item
-local cmp_autopairs = require "nvim-autopairs.completion.cmp"
 cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done { map_char = { tex = "" } })

@@ -109,6 +109,11 @@ _G.packer_plugins = {
     path = "/Users/maximilianfrauscher/.local/share/nvim/site/pack/packer/start/gv.vim",
     url = "https://github.com/junegunn/gv.vim"
   },
+  ["lspkind-nvim"] = {
+    loaded = true,
+    path = "/Users/maximilianfrauscher/.local/share/nvim/site/pack/packer/start/lspkind-nvim",
+    url = "https://github.com/onsails/lspkind-nvim"
+  },
   ["lualine.nvim"] = {
     loaded = true,
     path = "/Users/maximilianfrauscher/.local/share/nvim/site/pack/packer/start/lualine.nvim",
@@ -134,6 +139,11 @@ _G.packer_plugins = {
     path = "/Users/maximilianfrauscher/.local/share/nvim/site/pack/packer/start/null-ls.nvim",
     url = "https://github.com/jose-elias-alvarez/null-ls.nvim"
   },
+  ["nvim-autopairs"] = {
+    loaded = true,
+    path = "/Users/maximilianfrauscher/.local/share/nvim/site/pack/packer/start/nvim-autopairs",
+    url = "https://github.com/windwp/nvim-autopairs"
+  },
   ["nvim-base16"] = {
     loaded = true,
     path = "/Users/maximilianfrauscher/.local/share/nvim/site/pack/packer/start/nvim-base16",
@@ -143,6 +153,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/maximilianfrauscher/.local/share/nvim/site/pack/packer/start/nvim-cmp",
     url = "https://github.com/hrsh7th/nvim-cmp"
+  },
+  ["nvim-comment"] = {
+    loaded = true,
+    path = "/Users/maximilianfrauscher/.local/share/nvim/site/pack/packer/start/nvim-comment",
+    url = "https://github.com/terrortylor/nvim-comment"
   },
   ["nvim-dap"] = {
     loaded = true,
@@ -159,11 +174,20 @@ _G.packer_plugins = {
     path = "/Users/maximilianfrauscher/.local/share/nvim/site/pack/packer/start/nvim-palenight.lua",
     url = "https://github.com/kyazdani42/nvim-palenight.lua"
   },
+  ["nvim-surround"] = {
+    loaded = true,
+    path = "/Users/maximilianfrauscher/.local/share/nvim/site/pack/packer/start/nvim-surround",
+    url = "https://github.com/kylechui/nvim-surround"
+  },
   ["nvim-treesitter"] = {
-    config = { "\27LJ\2\n¼\1\0\0\5\0\n\0\r6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\6\0005\3\3\0005\4\4\0=\4\5\3=\3\a\0025\3\b\0=\3\t\2B\0\2\1K\0\1\0\21ensure_installed\1\2\0\0\borg\14highlight\1\0\0&additional_vim_regex_highlighting\1\2\0\0\borg\1\0\1\venable\2\nsetup\28nvim-treesitter.configs\frequire\0" },
     loaded = true,
     path = "/Users/maximilianfrauscher/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
     url = "https://github.com/nvim-treesitter/nvim-treesitter"
+  },
+  ["nvim-treesitter-textobjects"] = {
+    loaded = true,
+    path = "/Users/maximilianfrauscher/.local/share/nvim/site/pack/packer/start/nvim-treesitter-textobjects",
+    url = "https://github.com/nvim-treesitter/nvim-treesitter-textobjects"
   },
   ["nvim-web-devicons"] = {
     loaded = false,
@@ -187,7 +211,6 @@ _G.packer_plugins = {
     url = "https://github.com/MunifTanjim/prettier.nvim"
   },
   ["telescope-file-browser.nvim"] = {
-    config = { "\27LJ\2\n†\2\0\0\a\0\14\0\0196\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\0025\3\v\0005\4\6\0005\5\a\0004\6\0\0=\6\b\0054\6\0\0=\6\t\5=\5\n\4=\4\f\3=\3\r\2B\0\2\1K\0\1\0\15extensions\17file_browser\1\0\0\rmappings\6n\6i\1\0\0\1\0\2\ntheme\bivy\17hijack_netrw\2\25file_ignore_patterns\1\0\0\1\v\0\0\n.git/\v.cache\n.lock\b%.o\b%.a\n%.out\n%.pdf\n%.mkv\n%.mp4\n%.zip\nsetup\14telescope\frequire\0" },
     loaded = true,
     path = "/Users/maximilianfrauscher/.local/share/nvim/site/pack/packer/start/telescope-file-browser.nvim",
     url = "https://github.com/nvim-telescope/telescope-file-browser.nvim"
@@ -227,13 +250,7 @@ _G.packer_plugins = {
     path = "/Users/maximilianfrauscher/.local/share/nvim/site/pack/packer/start/vim-signify",
     url = "https://github.com/mhinz/vim-signify"
   },
-  ["vim-surround"] = {
-    loaded = true,
-    path = "/Users/maximilianfrauscher/.local/share/nvim/site/pack/packer/start/vim-surround",
-    url = "https://github.com/tpope/vim-surround"
-  },
   ["which-key.nvim"] = {
-    config = { "\27LJ\2\n;\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\14which-key\frequire\0" },
     loaded = true,
     path = "/Users/maximilianfrauscher/.local/share/nvim/site/pack/packer/start/which-key.nvim",
     url = "https://github.com/folke/which-key.nvim"
@@ -241,18 +258,6 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: telescope-file-browser.nvim
-time([[Config for telescope-file-browser.nvim]], true)
-try_loadstring("\27LJ\2\n†\2\0\0\a\0\14\0\0196\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\0025\3\v\0005\4\6\0005\5\a\0004\6\0\0=\6\b\0054\6\0\0=\6\t\5=\5\n\4=\4\f\3=\3\r\2B\0\2\1K\0\1\0\15extensions\17file_browser\1\0\0\rmappings\6n\6i\1\0\0\1\0\2\ntheme\bivy\17hijack_netrw\2\25file_ignore_patterns\1\0\0\1\v\0\0\n.git/\v.cache\n.lock\b%.o\b%.a\n%.out\n%.pdf\n%.mkv\n%.mp4\n%.zip\nsetup\14telescope\frequire\0", "config", "telescope-file-browser.nvim")
-time([[Config for telescope-file-browser.nvim]], false)
--- Config for: nvim-treesitter
-time([[Config for nvim-treesitter]], true)
-try_loadstring("\27LJ\2\n¼\1\0\0\5\0\n\0\r6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\6\0005\3\3\0005\4\4\0=\4\5\3=\3\a\0025\3\b\0=\3\t\2B\0\2\1K\0\1\0\21ensure_installed\1\2\0\0\borg\14highlight\1\0\0&additional_vim_regex_highlighting\1\2\0\0\borg\1\0\1\venable\2\nsetup\28nvim-treesitter.configs\frequire\0", "config", "nvim-treesitter")
-time([[Config for nvim-treesitter]], false)
--- Config for: which-key.nvim
-time([[Config for which-key.nvim]], true)
-try_loadstring("\27LJ\2\n;\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\14which-key\frequire\0", "config", "which-key.nvim")
-time([[Config for which-key.nvim]], false)
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then
