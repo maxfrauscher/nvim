@@ -11,7 +11,8 @@ require('plugins/prettier')
 require('plugins/nvim-telescope')
 require('plugins/which-key')
 require('plugins/lualine')
-
+require('plugins/nvim-treesitter')
+require('plugins/alpha-nvim')
 require('plugins/nvim-tree')
 
 --require('lualine')
@@ -24,6 +25,3 @@ require('plugins/nvim-tree')
 --require('linting')
 --require('lsp')
 --require('masonlsp')
-
--- .vim source
-vim.cmd('source ~/.config/nvim/plug-config/signify.vim')
