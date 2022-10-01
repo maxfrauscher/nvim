@@ -30,3 +30,5 @@ map ('n', '<Leader><', ':bp<CR>', opts)  -- previous buffer
 map ('n', '<Leader>>', ':bn<CR>', opts)  -- next buffer
 map ('n', '<Leader>bb', ':e#<CR>', opts)  -- switch buffers
 map ('n', '<Leader>bx', ':bd<CR>', opts) -- close buffer
+
+map ('v', '<C-r>', '"hy:%s/<C-r>h//gc<left><left><left>', opts)

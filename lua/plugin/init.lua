@@ -1,22 +1,28 @@
 -------------------------------------------------
 -- PLUGINS
 ------------------------------------------------
+require("nvim_comment").setup()
+require("nvim-autopairs").setup()
+require("which-key").setup()
+require("nvim-surround").setup()
 
 return require('packer').startup(function()
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
-
   use "williamboman/mason.nvim"
   use "williamboman/mason-lspconfig.nvim"
   use 'mfussenegger/nvim-dap'
-
+  use 'terrortylor/nvim-comment'
   use 'neovim/nvim-lspconfig' -- Collection of configurations for built-in LSP client
   use 'hrsh7th/nvim-cmp' -- Autocompletion plugin
   use 'hrsh7th/cmp-nvim-lsp' -- LSP source for nvim-cmp
+  use 'hrsh7th/cmp-buffer'
+  use 'hrsh7th/cmp-path'
+  use 'hrsh7th/cmp-cmdline'
   use 'saadparwaiz1/cmp_luasnip' -- Snippets source for nvim-cmp
+  use 'onsails/lspkind-nvim'
   use 'L3MON4D3/LuaSnip' -- Snippets plugin
-
-  -- NULL LS --
+  use "windwp/nvim-autopairs"
   use('jose-elias-alvarez/null-ls.nvim')
   use('MunifTanjim/prettier.nvim')
 
@@ -76,30 +82,10 @@ return require('packer').startup(function()
     end,
     run = function() require('nvim-treesitter.install').update({ with_sync = true }) end
   }
-
-  -- vim.opt.foldmethod     = 'expr'
-  -- vim.opt.foldexpr       = 'nvim_treesitter#foldexpr()'
-  ---WORKAROUND
-  -- vim.api.nvim_create_autocmd({'BufEnter','BufAdd','BufNew','BufNewFile','BufWinEnter'}, {
-  --   group = vim.api.nvim_create_augroup('TS_FOLD_WORKAROUND', {}),
-  --   callback = function()
-  --     vim.opt.foldmethod     = 'expr'
-  --     vim.opt.foldexpr       = 'nvim_treesitter#foldexpr()'
-  --   end
-  -- })
-  ---ENDWORKAROUND
+  use 'nvim-treesitter/nvim-treesitter-textobjects'
 
   -- Which key
-  use {
-    "folke/which-key.nvim",
-    config = function()
-      require("which-key").setup {
-        -- your configuration comes here
-        -- or leave it empty to use the default settings
-      }
-    end
-  }
-
+  use "folke/which-key.nvim"
 
   -- File management --
   -- use 'vifm/vifm.vim'
@@ -107,12 +93,15 @@ return require('packer').startup(function()
   use 'tiagofumo/vim-nerdtree-syntax-highlight'
   use 'ryanoasis/vim-devicons'
 
-  -- Tim Pope Plugins --
-  use 'tpope/vim-surround'
-
-  -- Syntax Highlighting and Colors --
-  -- use 'vim-python/python-syntax'
-  -- use 'ap/vim-css-color'
+  use({
+      "kylechui/nvim-surround",
+      tag = "*", -- Use for stability; omit to use `main` branch for the latest features
+      config = function()
+          require("nvim-surround").setup({
+              -- Configuration here, or leave empty to use defaults
+          })
+      end
+  })
 
   -- Colorschemes --
   use 'RRethy/nvim-base16'
