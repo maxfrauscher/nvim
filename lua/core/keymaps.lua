@@ -1,7 +1,6 @@
 -----------------------------------------------------------
 -- Define keymaps of Neovim and installed plugins.
 -----------------------------------------------------------
-
 local function map(mode, lhs, rhs, opts)
   local options = { noremap = true, silent = true }
   if opts then
@@ -9,6 +8,7 @@ local function map(mode, lhs, rhs, opts)
   end
   vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
+
 
 --CLIPBOARD
 map('n', '<Space>y', '\"+y') -- YANK
@@ -29,6 +29,14 @@ map('n', '<Space>fh', '<cmd>Telescope help_tags<CR>')
 map('n', '<Space>fr', '<cmd>Telescope lsp_references<CR>')
 map('n', '<Space>fi', '<cmd>Telescope lsp_implementations<CR>')
 map('n', '<Space>fd', '<cmd>Telescope lsp_definitions<CR>')
+
+-- V MOVEMENT <A-j>  = ∆, <A-k> = ˚
+map('n', '∆', ':m+ <CR>==')
+map('n', '˚', ':m-2 <CR>==')
+map('v', '∆', ':m+ <CR>gv=gv')
+map('v', '˚', ':m-2 <CR>gv=gv')
+map('i', '˚', '<Esc>:m-2 <CR>==gi')
+map('i', '∆', '<Esc>:m+ <CR>==gi')
 
 -- NvimTree
 map('n', '<Space>n', ':NvimTreeRefresh<CR>') -- refresh
