@@ -43,7 +43,7 @@ end
 -- INSTALL PLUGINS
 ------------------------------------------------
 require("nvim_comment").setup()
-require("nvim-autopairs").setup()
+-- require("nvim-autopairs").setup()
 require("nvim-surround").setup()
 
 return require('packer').startup(function()
@@ -66,6 +66,10 @@ return require('packer').startup(function()
       'hrsh7th/cmp-cmdline'
     },
   }
+
+  -- Undo Tree
+  use 'mbbill/undotree'
+
  -- Dashboard (start screen)
   use {
     'goolord/alpha-nvim',

@@ -10,6 +10,17 @@ local function map(mode, lhs, rhs, opts)
   vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
+--CLIPBOARD
+map('n', '<Space>y', '\"+y') -- YANK
+map('v', '<Space>y', '\"+y')
+
+map('x', '<Space>p', '\"_dP') -- PASTE IN VISUALMODE WITHOUT COPYING TO CLIPBOARD
+
+map('n', '<Space>d', '\"_d') -- DELETE
+map('v', '<Space>d', '\"_d')
+
+
+
 -- TELESCOPE
 map('n', '<Space>ff', '<cmd>Telescope find_files<CR>')
 map('n', '<Space>fg', '<cmd>Telescope live_grep<CR>')
@@ -46,3 +57,5 @@ map('n', '<Space>bb', ':e#<CR>') -- switch buffers
 map('n', '<Space>bx', ':bd<CR>') -- close buffer
 
 map('v', '<C-r>', '"hy:%s/<C-r>h//gc<left><left><left>')
+
+map('n', '<Space>u', '<cmd>UndotreeToggle<CR>')
