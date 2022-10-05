@@ -38,6 +38,14 @@ map('v', '˚', ':m-2 <CR>gv=gv')
 map('i', '˚', '<Esc>:m-2 <CR>==gi')
 map('i', '∆', '<Esc>:m+ <CR>==gi')
 
+-- Windows Mapping
+map('n', '<A-j>', ':m+ <CR>==')
+map('n', '<A-k>', ':m-2 <CR>==')
+map('v', '<A-j>', ':m+ <CR>gv=gv')
+map('v', '<A-k>', ':m-2 <CR>gv=gv')
+map('i', '<A-k>', '<Esc>:m-2 <CR>==gi')
+map('i', '<A-j>', '<Esc>:m+ <CR>==gi')
+
 -- NvimTree
 map('n', '<Space>n', ':NvimTreeRefresh<CR>') -- refresh
 map('n', '<C-n>', ':NvimTreeToggle<CR>') -- open/close
