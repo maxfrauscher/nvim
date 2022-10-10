@@ -14,6 +14,7 @@ require('plugins/lualine')
 require('plugins/nvim-treesitter')
 require('plugins/alpha-nvim')
 require('plugins/nvim-tree')
+require('plugins/comment')
 
 --require('lualine')
 --require('config')
