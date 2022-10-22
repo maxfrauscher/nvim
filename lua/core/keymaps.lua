@@ -1,4 +1,4 @@
------------------------------------------------------------
+    -----------------------------------------------------------
 -- Define keymaps of Neovim and installed plugins.
 -----------------------------------------------------------
 local function map(mode, lhs, rhs, opts)
@@ -19,7 +19,15 @@ map('x', '<Space>p', '\"_dP') -- PASTE IN VISUALMODE WITHOUT COPYING TO CLIPBOAR
 map('n', '<Space>d', '\"_d') -- DELETE
 map('v', '<Space>d', '\"_d')
 
+-- RESIZE WINDOWS
+map('n', '±' , ':horizontal resize +20<CR>') -- Alt +
+map('n', '—' , ':horizontal resize -20<CR>') -- Alt -
+map('n', '˘' , ':vertical resize +20<CR>') -- Alt >
+map('n', '¯' , ':vertical resize -20<CR>') -- Alt <
 
+-- Terminal mappings
+map('n', '<C-t>', ':Term<CR>', { noremap = true })  -- open
+map('t', '<Esc>', '<C-\\><C-n>')
 
 -- TELESCOPE
 map('n', '<Space>ff', '<cmd>Telescope find_files<CR>')
