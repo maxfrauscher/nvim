@@ -38,7 +38,7 @@ map('n', '<Space>fr', '<cmd>Telescope lsp_references<CR>')
 map('n', '<Space>fi', '<cmd>Telescope lsp_implementations<CR>')
 map('n', '<Space>fd', '<cmd>Telescope lsp_definitions<CR>')
 
--- V MOVEMENT <A-j>  = ∆, <A-k> = ˚
+-- LINE MOVEMENT <A-j>  = ∆, <A-k> = ˚
 map('n', '∆', ':m+ <CR>==')
 map('n', '˚', ':m-2 <CR>==')
 map('v', '∆', ':m+ <CR>gv=gv')
@@ -46,7 +46,7 @@ map('v', '˚', ':m-2 <CR>gv=gv')
 map('i', '˚', '<Esc>:m-2 <CR>==gi')
 map('i', '∆', '<Esc>:m+ <CR>==gi')
 
--- Windows Mapping
+-- LINE MOVEMENT Windows Mapping
 map('n', '<A-j>', ':m+ <CR>==')
 map('n', '<A-k>', ':m-2 <CR>==')
 map('v', '<A-j>', ':m+ <CR>gv=gv')
