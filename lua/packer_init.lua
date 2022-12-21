@@ -72,7 +72,11 @@ return require('packer').startup(function()
             'hrsh7th/cmp-cmdline'
         },
     }
-
+    use {
+        'filipdutescu/renamer.nvim',
+        branch = 'master',
+        requires = { { 'nvim-lua/plenary.nvim' } }
+    }
     -- Undo Tree
     use 'mbbill/undotree'
 

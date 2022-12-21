@@ -9,6 +9,12 @@ local function map(mode, lhs, rhs, opts)
   vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
+--LSP
+-- map('n', '<Space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', { noremap = true })
+
+map('i', '<F2>', '<cmd>lua require("renamer").rename()<cr>', { noremap = true, silent = true })
+map('n', '<Space>rn', '<cmd>lua require("renamer").rename()<cr>', { noremap = true, silent = true })
+map('v', '<Space>rn', '<cmd>lua require("renamer").rename()<cr>', { noremap = true, silent = true })
 
 --CLIPBOARD
 map('n', '<Space>y', '\"+y') -- YANK

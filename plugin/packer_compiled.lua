@@ -236,6 +236,11 @@ _G.packer_plugins = {
     path = "/Users/maximilianfrauscher/.local/share/nvim/site/pack/packer/start/prettier.nvim",
     url = "https://github.com/MunifTanjim/prettier.nvim"
   },
+  ["renamer.nvim"] = {
+    loaded = true,
+    path = "/Users/maximilianfrauscher/.local/share/nvim/site/pack/packer/start/renamer.nvim",
+    url = "https://github.com/filipdutescu/renamer.nvim"
+  },
   ["telescope-file-browser.nvim"] = {
     loaded = true,
     path = "/Users/maximilianfrauscher/.local/share/nvim/site/pack/packer/start/telescope-file-browser.nvim",

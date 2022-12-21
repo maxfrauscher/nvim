@@ -15,6 +15,7 @@ require('plugins/nvim-treesitter')
 require('plugins/alpha-nvim')
 require('plugins/nvim-tree')
 require('plugins/comment')
+require('plugins/renamer')
 
 --require('lualine')
 --require('config')
