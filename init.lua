@@ -16,6 +16,7 @@ require('plugins/alpha-nvim')
 require('plugins/nvim-tree')
 require('plugins/comment')
 require('plugins/renamer')
+require('plugins/harpoon')
 
 --require('lualine')
 --require('config')

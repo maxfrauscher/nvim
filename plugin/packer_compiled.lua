@@ -126,6 +126,11 @@ _G.packer_plugins = {
     path = "/Users/maximilianfrauscher/.local/share/nvim/site/pack/packer/start/gv.vim",
     url = "https://github.com/junegunn/gv.vim"
   },
+  harpoon = {
+    loaded = true,
+    path = "/Users/maximilianfrauscher/.local/share/nvim/site/pack/packer/start/harpoon",
+    url = "https://github.com/ThePrimeagen/harpoon"
+  },
   ["lspkind-nvim"] = {
     loaded = true,
     path = "/Users/maximilianfrauscher/.local/share/nvim/site/pack/packer/start/lspkind-nvim",

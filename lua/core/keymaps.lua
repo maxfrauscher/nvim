@@ -9,6 +9,11 @@ local function map(mode, lhs, rhs, opts)
   vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
+-- Harpoon
+map('n', '<Space>a', '<cmd>lua require("harpoon.mark").add_file()<cr>')
+map('n', '<C-e>', '<cmd>lua require("harpoon.ui").toggle_quick_menu()<cr>')
+
+
 --LSP
 -- map('n', '<Space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', { noremap = true })
 

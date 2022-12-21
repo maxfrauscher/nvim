@@ -77,6 +77,11 @@ return require('packer').startup(function()
         branch = 'master',
         requires = { { 'nvim-lua/plenary.nvim' } }
     }
+
+    use {
+        'ThePrimeagen/harpoon',
+        requires = { { 'nvim-lua/plenary.nvim' } }
+    }
     -- Undo Tree
     use 'mbbill/undotree'
 
